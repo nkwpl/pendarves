@@ -30,8 +30,7 @@ export default async function PostPage({
         <h1
           style={{
             fontSize: "1.75rem",
-            fontWeight: 700,
-            color: "var(--base01)",
+            color: "var(--fg-emphasis)",
             lineHeight: 1.2,
             marginBottom: "0.5rem",
           }}
@@ -46,7 +45,7 @@ export default async function PostPage({
             fontSize: "0.85rem",
           }}
         >
-          <time style={{ color: "var(--base1)", fontFamily: "monospace" }}>
+          <time style={{ color: "var(--fg-muted)" }}>
             {format(new Date(post.date), "dd MMMM yyyy")}
           </time>
           <Link

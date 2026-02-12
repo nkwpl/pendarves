@@ -1,14 +1,7 @@
 import type { Metadata } from "next";
-import { EB_Garamond } from "next/font/google";
 import Link from "next/link";
 import { getAllTopics } from "@/lib/posts";
 import "./globals.css";
-
-const garamond = EB_Garamond({
-  subsets: ["latin"],
-  variable: "--font-garamond",
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   title: "Pendarves",
@@ -23,7 +16,7 @@ export default function RootLayout({
   const topics = getAllTopics();
 
   return (
-    <html lang="en" className={garamond.variable}>
+    <html lang="en">
       <head>
         <link
           href="https://fonts.cdnfonts.com/css/chicagoflf"
@@ -45,7 +38,7 @@ export default function RootLayout({
                 alignItems: "baseline",
                 gap: "1.5rem",
                 flexWrap: "wrap",
-                borderBottom: "1px solid var(--base2)",
+                borderBottom: "1px solid var(--bg-alt)",
                 paddingBottom: "1rem",
               }}
             >
@@ -53,8 +46,7 @@ export default function RootLayout({
                 href="/"
                 style={{
                   fontSize: "1.5rem",
-                  fontWeight: 700,
-                  color: "var(--base01)",
+                  color: "var(--fg-emphasis)",
                   letterSpacing: "0.05em",
                   fontFamily: "var(--font-chicago)",
                 }}
@@ -72,12 +64,12 @@ export default function RootLayout({
                   <Link
                     key={topic}
                     href={`/topic/${topic.toLowerCase()}`}
-                    style={{ color: "var(--base00)" }}
+                    style={{ color: "var(--fg)" }}
                   >
                     {topic}
                   </Link>
                 ))}
-                <Link href="/archive" style={{ color: "var(--base00)" }}>
+                <Link href="/archive" style={{ color: "var(--fg)" }}>
                   Archive
                 </Link>
               </div>
@@ -90,9 +82,9 @@ export default function RootLayout({
             style={{
               marginTop: "4rem",
               paddingTop: "1rem",
-              borderTop: "1px solid var(--base2)",
+              borderTop: "1px solid var(--bg-alt)",
               fontSize: "0.8rem",
-              color: "var(--base1)",
+              color: "var(--fg-muted)",
             }}
           >
             Pendarves &middot; {new Date().getFullYear()}

@@ -25,8 +25,7 @@ export default function Home() {
             <time
               style={{
                 fontSize: "0.8rem",
-                color: "var(--base1)",
-                fontFamily: "monospace",
+                color: "var(--fg-muted)",
                 whiteSpace: "nowrap",
               }}
             >
@@ -48,8 +47,7 @@ export default function Home() {
             href={`/posts/${post.slug}`}
             style={{
               fontSize: "1.25rem",
-              fontWeight: 600,
-              color: "var(--base01)",
+              color: "var(--fg-emphasis)",
             }}
           >
             {post.title}
@@ -59,7 +57,7 @@ export default function Home() {
               marginTop: "0.375rem",
               fontSize: "0.95rem",
               lineHeight: 1.6,
-              color: "var(--base00)",
+              color: "var(--fg)",
             }}
           >
             {post.excerpt}

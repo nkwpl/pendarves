@@ -1,15 +1,45 @@
 @import "tailwindcss";
 
-/* Solarized color palette */
+/* Apple Garamond — local font faces */
+@font-face {
+  font-family: "Apple Garamond";
+  src: url("/fonts/AppleGaramond-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Apple Garamond";
+  src: url("/fonts/AppleGaramond.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Apple Garamond";
+  src: url("/fonts/AppleGaramond-LightItalic.ttf") format("truetype");
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Apple Garamond";
+  src: url("/fonts/AppleGaramond-Italic.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Solarized Light (default) */
 :root {
-  --base03: #002b36;
-  --base02: #073642;
-  --base01: #586e75;
-  --base00: #657b83;
-  --base0: #839496;
-  --base1: #93a1a1;
-  --base2: #eee8d5;
-  --base3: #fdf6e3;
+  --bg: #fdf6e3;
+  --bg-alt: #eee8d5;
+  --fg: #657b83;
+  --fg-emphasis: #586e75;
+  --fg-muted: #93a1a1;
   --yellow: #b58900;
   --orange: #cb4b16;
   --red: #dc322f;
@@ -22,11 +52,35 @@
   --font-chicago: "ChicagoFLF", "Chicago", monospace;
 }
 
+/* Solarized Dark */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #002b36;
+    --bg-alt: #073642;
+    --fg: #839496;
+    --fg-emphasis: #93a1a1;
+    --fg-muted: #586e75;
+  }
+}
+
 body {
-  background-color: var(--base3);
-  color: var(--base00);
-  font-family: var(--font-garamond), "Apple Garamond", Garamond, "EB Garamond",
-    serif;
+  background-color: var(--bg);
+  color: var(--fg);
+  font-family: "Apple Garamond", Garamond, serif;
+  font-weight: 400;
+}
+
+/* No bold — Apple Garamond looks best at regular weight */
+strong,
+b,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+th {
+  font-weight: 400;
 }
 
 a {
@@ -38,7 +92,7 @@ a:hover {
   color: var(--cyan);
 }
 
-/* Monospace elements use Chicago */
+/* Chicago for dates, code, mono elements */
 time,
 code,
 pre,
@@ -48,9 +102,8 @@ pre,
 
 /* Prose styles for article content */
 .prose h2 {
-  color: var(--base01);
+  color: var(--fg-emphasis);
   font-size: 1.25rem;
-  font-weight: 700;
   margin-top: 2rem;
   margin-bottom: 0.75rem;
 }
@@ -80,14 +133,13 @@ pre,
 }
 
 .prose strong {
-  color: var(--base01);
-  font-weight: 700;
+  color: var(--fg-emphasis);
 }
 
 .prose blockquote {
   border-left: 3px solid var(--yellow);
   padding-left: 1rem;
-  color: var(--base01);
+  color: var(--fg-emphasis);
   font-style: italic;
   margin: 1.5rem 0;
 }
@@ -95,7 +147,7 @@ pre,
 .prose code {
   font-family: var(--font-chicago);
   font-size: 0.9em;
-  background-color: var(--base2);
+  background-color: var(--bg-alt);
   padding: 0.1em 0.3em;
   border-radius: 2px;
 }

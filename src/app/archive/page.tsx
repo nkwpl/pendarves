@@ -15,8 +15,7 @@ export default function ArchivePage() {
       <h1
         style={{
           fontSize: "1.25rem",
-          fontWeight: 700,
-          color: "var(--base01)",
+          color: "var(--fg-emphasis)",
           marginBottom: "2rem",
           textTransform: "uppercase",
           letterSpacing: "0.05em",
@@ -34,7 +33,6 @@ export default function ArchivePage() {
             <h2
               style={{
                 fontSize: "1rem",
-                fontWeight: 600,
                 color: "var(--yellow)",
                 marginBottom: "0.75rem",
               }}
@@ -54,8 +52,7 @@ export default function ArchivePage() {
                 <time
                   style={{
                     fontSize: "0.8rem",
-                    color: "var(--base1)",
-                    fontFamily: "monospace",
+                    color: "var(--fg-muted)",
                     whiteSpace: "nowrap",
                   }}
                 >
@@ -63,7 +60,7 @@ export default function ArchivePage() {
                 </time>
                 <Link
                   href={`/posts/${post.slug}`}
-                  style={{ color: "var(--base01)" }}
+                  style={{ color: "var(--fg-emphasis)" }}
                 >
                   {post.title}
                 </Link>

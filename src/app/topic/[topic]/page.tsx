@@ -31,8 +31,7 @@ export default async function TopicPage({
       <h1
         style={{
           fontSize: "1.25rem",
-          fontWeight: 700,
-          color: "var(--base01)",
+          color: "var(--fg-emphasis)",
           marginBottom: "2rem",
           textTransform: "uppercase",
           letterSpacing: "0.05em",
@@ -42,7 +41,7 @@ export default async function TopicPage({
       </h1>
 
       {posts.length === 0 ? (
-        <p style={{ color: "var(--base1)" }}>No posts in this topic yet.</p>
+        <p style={{ color: "var(--fg-muted)" }}>No posts in this topic yet.</p>
       ) : (
         posts.map((post) => (
           <article key={post.slug} style={{ marginBottom: "1.5rem" }}>
@@ -56,8 +55,7 @@ export default async function TopicPage({
               <time
                 style={{
                   fontSize: "0.8rem",
-                  color: "var(--base1)",
-                  fontFamily: "monospace",
+                  color: "var(--fg-muted)",
                   whiteSpace: "nowrap",
                 }}
               >
@@ -65,7 +63,7 @@ export default async function TopicPage({
               </time>
               <Link
                 href={`/posts/${post.slug}`}
-                style={{ color: "var(--base01)", fontWeight: 600 }}
+                style={{ color: "var(--fg-emphasis)" }}
               >
                 {post.title}
               </Link>
