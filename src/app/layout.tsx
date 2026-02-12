@@ -1,7 +1,14 @@
 import type { Metadata } from "next";
+import { EB_Garamond } from "next/font/google";
 import Link from "next/link";
 import { getAllTopics } from "@/lib/posts";
 import "./globals.css";
+
+const garamond = EB_Garamond({
+  subsets: ["latin"],
+  variable: "--font-garamond",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "Pendarves",
@@ -16,7 +23,13 @@ export default function RootLayout({
   const topics = getAllTopics();
 
   return (
-    <html lang="en">
+    <html lang="en" className={garamond.variable}>
+      <head>
+        <link
+          href="https://fonts.cdnfonts.com/css/chicagoflf"
+          rel="stylesheet"
+        />
+      </head>
       <body>
         <div
           style={{
@@ -43,6 +56,7 @@ export default function RootLayout({
                   fontWeight: 700,
                   color: "var(--base01)",
                   letterSpacing: "0.05em",
+                  fontFamily: "var(--font-chicago)",
                 }}
               >
                 Pendarves
