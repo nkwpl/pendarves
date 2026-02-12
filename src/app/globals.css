@@ -52,15 +52,16 @@
   --font-chicago: "ChicagoFLF", "Chicago", monospace;
 }
 
-/* Solarized Dark */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #002b36;
-    --bg-alt: #073642;
-    --fg: #839496;
-    --fg-emphasis: #93a1a1;
-    --fg-muted: #586e75;
-  }
+/* Solarized Dark — warmer variant */
+[data-theme="dark"] {
+  --bg: #1a1612;
+  --bg-alt: #262017;
+  --fg: #a0967e;
+  --fg-emphasis: #c4b99a;
+  --fg-muted: #6b6352;
+  --yellow: #b58900;
+  --blue: #6ca0c4;
+  --cyan: #6db0a8;
 }
 
 body {

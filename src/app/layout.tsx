@@ -1,12 +1,23 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { getAllTopics } from "@/lib/posts";
+import ThemeToggle from "@/components/ThemeToggle";
 import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Pendarves",
   description: "Essays on philosophy, power, AI, and making things.",
 };
+
+const themeScript = `
+(function() {
+  var t = localStorage.getItem('theme');
+  if (!t) {
+    t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  }
+  document.documentElement.setAttribute('data-theme', t);
+})();
+`;
 
 export default function RootLayout({
   children,
@@ -16,8 +27,9 @@ export default function RootLayout({
   const topics = getAllTopics();
 
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         <link
           href="https://fonts.cdnfonts.com/css/chicagoflf"
           rel="stylesheet"
@@ -58,6 +70,7 @@ export default function RootLayout({
                   display: "flex",
                   gap: "1rem",
                   fontSize: "0.875rem",
+                  alignItems: "baseline",
                 }}
               >
                 {topics.map((topic) => (
@@ -72,6 +85,7 @@ export default function RootLayout({
                 <Link href="/archive" style={{ color: "var(--fg)" }}>
                   Archive
                 </Link>
+                <ThemeToggle />
               </div>
             </nav>
           </header>
