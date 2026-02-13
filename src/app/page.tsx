@@ -22,10 +22,10 @@ export default function Home() {
           {essays.map((entry) => (
             <div key={entry.slug} className="entry">
               <Link href={`/posts/${entry.slug}`}>{entry.title}</Link>
-              <span className="meta">
+              <time className="meta">
                 {" "}
                 ({format(new Date(entry.date), "MMMM yyyy")})
-              </span>
+              </time>
             </div>
           ))}
         </section>
@@ -38,10 +38,10 @@ export default function Home() {
           {posts.map((entry) => (
             <div key={entry.slug} className="entry">
               <Link href={`/posts/${entry.slug}`}>{entry.title}</Link>
-              <span className="meta">
+              <time className="meta">
                 {" "}
                 ({format(new Date(entry.date), "MMMM yyyy")})
-              </span>
+              </time>
             </div>
           ))}
         </section>

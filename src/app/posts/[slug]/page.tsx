@@ -38,7 +38,7 @@ export default async function PostPage({
         <header style={{ marginBottom: "2.5rem" }}>
           <h1
             style={{
-              fontSize: "1.75rem",
+              fontSize: "2.1rem",
               color: "var(--fg-emphasis)",
               lineHeight: 1.3,
               marginBottom: "0.5rem",

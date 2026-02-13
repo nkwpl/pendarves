@@ -34,6 +34,7 @@ export default function TableOfContents({ headings }: { headings: Heading[] }) {
 
   return (
     <nav className="toc">
+      <p className="toc-heading">Contents:</p>
       <ul>
         {headings.map((h) => (
           <li key={h.id}>

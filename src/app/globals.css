@@ -37,9 +37,9 @@
 :root {
   --bg: #fdf6e3;
   --bg-alt: #eee8d5;
-  --fg: #657b83;
-  --fg-emphasis: #586e75;
-  --fg-muted: #93a1a1;
+  --fg: #4a5d66;
+  --fg-emphasis: #394b53;
+  --fg-muted: #839496;
   --yellow: #b58900;
   --orange: #cb4b16;
   --red: #dc322f;
@@ -56,9 +56,9 @@
 [data-theme="dark"] {
   --bg: #1a1612;
   --bg-alt: #262017;
-  --fg: #a0967e;
-  --fg-emphasis: #c4b99a;
-  --fg-muted: #6b6352;
+  --fg: #b8ae96;
+  --fg-emphasis: #d4cab0;
+  --fg-muted: #7d7464;
   --yellow: #b58900;
   --blue: #6ca0c4;
   --cyan: #6db0a8;
@@ -73,17 +73,20 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* No bold — Apple Garamond looks best at regular weight */
+/* Headings use bold; other elements stay regular weight */
 strong,
 b,
+th {
+  font-weight: 400;
+}
+
 h1,
 h2,
 h3,
 h4,
 h5,
-h6,
-th {
-  font-weight: 400;
+h6 {
+  font-weight: 700;
 }
 
 a {
@@ -138,15 +141,14 @@ pre,
 
 .prose h2 {
   color: var(--fg-emphasis);
-  font-size: 1.375rem;
+  font-size: 1.6rem;
   margin-top: 2.5rem;
   margin-bottom: 0.75rem;
 }
 
 .prose h3 {
   color: var(--fg-emphasis);
-  font-size: 1.125rem;
-  font-style: italic;
+  font-size: 1.3rem;
   margin-top: 2rem;
   margin-bottom: 0.5rem;
 }
@@ -242,16 +244,18 @@ pre,
 @media (min-width: 1100px) {
   .toc-sidebar {
     display: block;
-    position: absolute;
-    right: calc(100% + 3rem);
-    top: 0;
+    position: fixed;
+    top: 5rem;
+    left: calc(50vw - 502px);
     width: 180px;
   }
 }
 
-.toc {
-  position: sticky;
-  top: 5rem;
+.toc-heading {
+  font-size: 0.8rem;
+  color: var(--fg-emphasis);
+  margin-bottom: 0.75rem;
+  font-weight: 700;
 }
 
 .toc ul {
@@ -279,4 +283,50 @@ pre,
 
 .toc a.toc-active {
   color: var(--fg-emphasis);
+}
+
+/* Theme toggle — pill slider */
+.theme-toggle {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 48px;
+  height: 24px;
+  padding: 0 6px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  background-color: var(--bg-alt);
+  transition: background-color 0.3s ease;
+}
+
+.theme-toggle .toggle-icon {
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+}
+
+.theme-toggle .toggle-sun {
+  color: var(--yellow);
+}
+
+.theme-toggle .toggle-moon {
+  color: var(--fg-muted);
+}
+
+.toggle-thumb {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: var(--bg);
+  transition: transform 0.3s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+}
+
+.toggle-thumb-dark {
+  transform: translateX(24px);
 }
