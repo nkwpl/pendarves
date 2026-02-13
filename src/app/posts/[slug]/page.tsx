@@ -35,6 +35,17 @@ export default async function PostPage({
       )}
 
       <article className="essay-content">
+        <Link
+          href="/"
+          style={{
+            fontSize: "0.85rem",
+            color: "var(--fg-muted)",
+            display: "inline-block",
+            marginBottom: "1.5rem",
+          }}
+        >
+          ← Back
+        </Link>
         <header style={{ marginBottom: "2.5rem" }}>
           <h1
             style={{
