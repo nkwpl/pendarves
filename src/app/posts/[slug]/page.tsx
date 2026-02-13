@@ -49,7 +49,7 @@ export default async function PostPage({
         <header style={{ marginBottom: "2.5rem" }}>
           <h1
             style={{
-              fontSize: "2.1rem",
+              fontSize: "2.5rem",
               color: "var(--fg-emphasis)",
               lineHeight: 1.3,
               marginBottom: "0.5rem",
@@ -60,7 +60,7 @@ export default async function PostPage({
           </h1>
           <time
             style={{
-              fontSize: "0.85rem",
+              fontSize: "0.75rem",
               color: "var(--fg-muted)",
             }}
           >
