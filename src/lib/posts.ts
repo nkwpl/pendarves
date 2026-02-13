@@ -6,10 +6,13 @@ import html from "remark-html";
 
 const postsDirectory = path.join(process.cwd(), "content/posts");
 
+export type PostType = "essay" | "post";
+
 export interface Post {
   slug: string;
   title: string;
   date: string;
+  type: PostType;
   topic: string;
   excerpt: string;
   content: string;
@@ -19,6 +22,7 @@ export interface PostMeta {
   slug: string;
   title: string;
   date: string;
+  type: PostType;
   topic: string;
   excerpt: string;
 }
@@ -41,6 +45,7 @@ export function getAllPostsMeta(): PostMeta[] {
       slug,
       title: data.title,
       date: data.date,
+      type: (data.type as PostType) || "post",
       topic: data.topic,
       excerpt: data.excerpt,
     };
@@ -62,34 +67,15 @@ export async function getPostBySlug(slug: string): Promise<Post> {
     slug,
     title: data.title,
     date: data.date,
+    type: (data.type as PostType) || "post",
     topic: data.topic,
     excerpt: data.excerpt,
     content: processedContent.toString(),
   };
 }
 
-export function getAllTopics(): string[] {
-  const posts = getAllPostsMeta();
-  const topics = new Set(posts.map((p) => p.topic));
-  return Array.from(topics).sort();
-}
-
-export function getPostsByTopic(topic: string): PostMeta[] {
-  return getAllPostsMeta().filter((p) => p.topic === topic);
-}
-
-export function getPostsByMonth(): Record<string, PostMeta[]> {
-  const posts = getAllPostsMeta();
-  const grouped: Record<string, PostMeta[]> = {};
-
-  for (const post of posts) {
-    const date = new Date(post.date);
-    const key = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}`;
-    if (!grouped[key]) grouped[key] = [];
-    grouped[key].push(post);
-  }
-
-  return grouped;
+export function getPostsByType(type: PostType): PostMeta[] {
+  return getAllPostsMeta().filter((p) => p.type === type);
 }
 
 export function getAllSlugs(): string[] {

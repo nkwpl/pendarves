@@ -13,7 +13,7 @@ export async function generateMetadata({
 }) {
   const { slug } = await params;
   const post = await getPostBySlug(slug);
-  return { title: `${post.title} — Pendarves` };
+  return { title: `Pendarves — ${post.title}` };
 }
 
 export default async function PostPage({
@@ -26,40 +26,26 @@ export default async function PostPage({
 
   return (
     <article>
-      <header style={{ marginBottom: "2rem" }}>
+      <header style={{ marginBottom: "2.5rem" }}>
         <h1
           style={{
             fontSize: "1.75rem",
             color: "var(--fg-emphasis)",
-            lineHeight: 1.2,
+            lineHeight: 1.3,
             marginBottom: "0.5rem",
+            textWrap: "balance",
           }}
         >
           {post.title}
         </h1>
-        <div
+        <time
           style={{
-            display: "flex",
-            gap: "0.75rem",
-            alignItems: "baseline",
             fontSize: "0.85rem",
+            color: "var(--fg-muted)",
           }}
         >
-          <time style={{ color: "var(--fg-muted)" }}>
-            {format(new Date(post.date), "dd MMMM yyyy")}
-          </time>
-          <Link
-            href={`/topic/${post.topic.toLowerCase()}`}
-            style={{
-              color: "var(--cyan)",
-              textTransform: "uppercase",
-              letterSpacing: "0.05em",
-              fontSize: "0.75rem",
-            }}
-          >
-            {post.topic}
-          </Link>
-        </div>
+          {format(new Date(post.date), "MMMM yyyy")}
+        </time>
       </header>
 
       <div
@@ -67,11 +53,20 @@ export default async function PostPage({
         dangerouslySetInnerHTML={{ __html: post.content }}
       />
 
-      <div style={{ marginTop: "3rem" }}>
-        <Link href="/" style={{ fontSize: "0.875rem" }}>
-          &larr; All posts
+      <footer
+        style={{
+          marginTop: "3rem",
+          paddingTop: "1.5rem",
+          borderTop: "1px solid var(--bg-alt)",
+        }}
+      >
+        <Link
+          href="/"
+          style={{ fontSize: "0.9rem", color: "var(--fg-muted)" }}
+        >
+          Pendarves
         </Link>
-      </div>
+      </footer>
     </article>
   );
 }

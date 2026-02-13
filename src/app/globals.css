@@ -69,6 +69,8 @@ body {
   color: var(--fg);
   font-family: "Apple Garamond", Garamond, serif;
   font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* No bold — Apple Garamond looks best at regular weight */
@@ -85,12 +87,12 @@ th {
 }
 
 a {
-  color: var(--blue);
+  color: var(--fg-emphasis);
   text-decoration: none;
 }
 
 a:hover {
-  color: var(--cyan);
+  color: var(--blue);
 }
 
 /* Chicago for dates, code, mono elements */
@@ -101,28 +103,66 @@ pre,
   font-family: var(--font-chicago);
 }
 
-/* Prose styles for article content */
+/* Section headings on homepage */
+.section-heading {
+  font-size: 1rem;
+  color: var(--fg-muted);
+  margin-bottom: 0.75rem;
+  letter-spacing: 0.02em;
+}
+
+/* Entry list items */
+.entry {
+  margin-bottom: 0.375rem;
+  line-height: 1.5;
+}
+
+.entry a {
+  color: var(--fg-emphasis);
+}
+
+.entry a:hover {
+  color: var(--blue);
+}
+
+.entry .meta {
+  color: var(--fg-muted);
+  font-size: 0.9em;
+}
+
+/* Prose styles for essay content */
+.prose {
+  font-size: 1.125rem;
+  line-height: 1.8;
+}
+
 .prose h2 {
   color: var(--fg-emphasis);
-  font-size: 1.25rem;
-  margin-top: 2rem;
+  font-size: 1.375rem;
+  margin-top: 2.5rem;
   margin-bottom: 0.75rem;
 }
 
+.prose h3 {
+  color: var(--fg-emphasis);
+  font-size: 1.125rem;
+  font-style: italic;
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+}
+
 .prose p {
-  line-height: 1.75;
-  margin-bottom: 1.25rem;
+  margin-bottom: 1.5rem;
 }
 
 .prose ul,
 .prose ol {
-  margin-bottom: 1.25rem;
+  margin-bottom: 1.5rem;
   padding-left: 1.5rem;
 }
 
 .prose li {
-  line-height: 1.75;
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.375rem;
 }
 
 .prose ul li {
@@ -138,17 +178,54 @@ pre,
 }
 
 .prose blockquote {
-  border-left: 3px solid var(--yellow);
-  padding-left: 1rem;
-  color: var(--fg-emphasis);
+  border-left: 2px solid var(--fg-muted);
+  padding-left: 1.25rem;
+  color: var(--fg);
   font-style: italic;
-  margin: 1.5rem 0;
+  margin: 2rem 0;
+}
+
+.prose hr {
+  border: none;
+  text-align: center;
+  margin: 2.5rem 0;
+}
+
+.prose hr::after {
+  content: "* * *";
+  color: var(--fg-muted);
+  font-size: 0.875rem;
+  letter-spacing: 0.5em;
 }
 
 .prose code {
   font-family: var(--font-chicago);
-  font-size: 0.9em;
+  font-size: 0.85em;
   background-color: var(--bg-alt);
-  padding: 0.1em 0.3em;
+  padding: 0.15em 0.35em;
   border-radius: 2px;
+}
+
+/* Archive page */
+.archive-section {
+  margin-bottom: 1.5rem;
+}
+
+.archive-year {
+  font-size: 1rem;
+  color: var(--fg-muted);
+  margin-bottom: 0.5rem;
+}
+
+.archive-entry {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  margin-bottom: 0.25rem;
+}
+
+.archive-entry time {
+  font-size: 0.75rem;
+  color: var(--fg-muted);
+  white-space: nowrap;
 }

@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { getAllTopics } from "@/lib/posts";
 import ThemeToggle from "@/components/ThemeToggle";
 import "./globals.css";
 
@@ -24,8 +23,6 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const topics = getAllTopics();
-
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
@@ -38,29 +35,24 @@ export default function RootLayout({
       <body>
         <div
           style={{
-            maxWidth: "720px",
+            maxWidth: "640px",
             margin: "0 auto",
-            padding: "2rem 1.5rem",
+            padding: "2.5rem 1.5rem",
           }}
         >
-          <header style={{ marginBottom: "3rem" }}>
+          <header style={{ marginBottom: "2.5rem" }}>
             <nav
               style={{
                 display: "flex",
                 alignItems: "baseline",
-                gap: "1.5rem",
-                flexWrap: "wrap",
-                borderBottom: "1px solid var(--bg-alt)",
-                paddingBottom: "1rem",
+                justifyContent: "space-between",
               }}
             >
               <Link
                 href="/"
                 style={{
-                  fontSize: "1.5rem",
+                  fontSize: "1rem",
                   color: "var(--fg-emphasis)",
-                  letterSpacing: "0.05em",
-                  fontFamily: "var(--font-chicago)",
                 }}
               >
                 Pendarves
@@ -68,21 +60,12 @@ export default function RootLayout({
               <div
                 style={{
                   display: "flex",
-                  gap: "1rem",
-                  fontSize: "0.875rem",
+                  gap: "1.25rem",
                   alignItems: "baseline",
+                  fontSize: "0.9rem",
                 }}
               >
-                {topics.map((topic) => (
-                  <Link
-                    key={topic}
-                    href={`/topic/${topic.toLowerCase()}`}
-                    style={{ color: "var(--fg)" }}
-                  >
-                    {topic}
-                  </Link>
-                ))}
-                <Link href="/archive" style={{ color: "var(--fg)" }}>
+                <Link href="/archive" style={{ color: "var(--fg-muted)" }}>
                   Archive
                 </Link>
                 <ThemeToggle />
@@ -91,18 +74,6 @@ export default function RootLayout({
           </header>
 
           <main>{children}</main>
-
-          <footer
-            style={{
-              marginTop: "4rem",
-              paddingTop: "1rem",
-              borderTop: "1px solid var(--bg-alt)",
-              fontSize: "0.8rem",
-              color: "var(--fg-muted)",
-            }}
-          >
-            Pendarves &middot; {new Date().getFullYear()}
-          </footer>
         </div>
       </body>
     </html>

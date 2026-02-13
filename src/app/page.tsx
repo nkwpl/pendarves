@@ -1,69 +1,51 @@
 import Link from "next/link";
-import { getAllPostsMeta } from "@/lib/posts";
+import { getPostsByType } from "@/lib/posts";
 import { format } from "date-fns";
 
 export default function Home() {
-  const posts = getAllPostsMeta();
+  const essays = getPostsByType("essay");
+  const posts = getPostsByType("post");
 
   return (
     <div>
-      {posts.map((post) => (
-        <article
-          key={post.slug}
-          style={{
-            marginBottom: "2.5rem",
-          }}
-        >
-          <div
-            style={{
-              display: "flex",
-              alignItems: "baseline",
-              gap: "0.75rem",
-              marginBottom: "0.25rem",
-            }}
-          >
-            <time
-              style={{
-                fontSize: "0.8rem",
-                color: "var(--fg-muted)",
-                whiteSpace: "nowrap",
-              }}
-            >
-              {format(new Date(post.date), "dd MMM yyyy")}
-            </time>
-            <Link
-              href={`/topic/${post.topic.toLowerCase()}`}
-              style={{
-                fontSize: "0.75rem",
-                color: "var(--cyan)",
-                textTransform: "uppercase",
-                letterSpacing: "0.05em",
-              }}
-            >
-              {post.topic}
-            </Link>
-          </div>
-          <Link
-            href={`/posts/${post.slug}`}
-            style={{
-              fontSize: "1.25rem",
-              color: "var(--fg-emphasis)",
-            }}
-          >
-            {post.title}
-          </Link>
-          <p
-            style={{
-              marginTop: "0.375rem",
-              fontSize: "0.95rem",
-              lineHeight: 1.6,
-              color: "var(--fg)",
-            }}
-          >
-            {post.excerpt}
-          </p>
-        </article>
-      ))}
+      {/* Bio */}
+      <section style={{ marginBottom: "2.5rem", lineHeight: 1.7 }}>
+        <p style={{ color: "var(--fg)" }}>
+          Writing about philosophy, power, AI, and making things.
+        </p>
+      </section>
+
+      {/* Essays */}
+      {essays.length > 0 && (
+        <section style={{ marginBottom: "2rem" }}>
+          <h2 className="section-heading">Essays</h2>
+          {essays.map((entry) => (
+            <div key={entry.slug} className="entry">
+              <Link href={`/posts/${entry.slug}`}>{entry.title}</Link>
+              <span className="meta">
+                {" "}
+                ({format(new Date(entry.date), "MMMM yyyy")})
+              </span>
+            </div>
+          ))}
+        </section>
+      )}
+
+      {/* Short posts */}
+      {posts.length > 0 && (
+        <section style={{ marginBottom: "2rem" }}>
+          <h2 className="section-heading">Short posts</h2>
+          {posts.map((entry) => (
+            <div key={entry.slug} className="entry">
+              <Link href={`/posts/${entry.slug}`}>{entry.title}</Link>
+              <span className="meta">
+                {" "}
+                ({format(new Date(entry.date), "MMMM yyyy")})
+              </span>
+            </div>
+          ))}
+        </section>
+      )}
     </div>
   );
 }
