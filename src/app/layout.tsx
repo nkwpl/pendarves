@@ -51,7 +51,7 @@ export default function RootLayout({
               <Link
                 href="/"
                 style={{
-                  fontSize: "1rem",
+                  fontSize: "1.4rem",
                   color: "var(--fg-emphasis)",
                 }}
               >

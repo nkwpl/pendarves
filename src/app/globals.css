@@ -68,6 +68,7 @@ body {
   background-color: var(--bg);
   color: var(--fg);
   font-family: "Apple Garamond", Garamond, serif;
+  font-size: 1.1rem;
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -108,7 +109,6 @@ pre,
 
 /* Section headings on homepage */
 .section-heading {
-  font-size: 1.2rem;
   color: var(--fg-muted);
   margin-bottom: 0.75rem;
   letter-spacing: 0.02em;
@@ -118,7 +118,6 @@ pre,
 .entry {
   margin-bottom: 0.5rem;
   line-height: 1.5;
-  font-size: 1.15rem;
 }
 
 .entry a {
@@ -131,12 +130,11 @@ pre,
 
 .entry .meta {
   color: var(--fg-muted);
-  font-size: 0.7em;
+  font-size: 0.65em;
 }
 
 /* Prose styles for essay content */
 .prose {
-  font-size: 1.125rem;
   line-height: 1.8;
 }
 
