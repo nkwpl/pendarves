@@ -24,6 +24,7 @@ export interface PostMeta {
 }
 
 function getPostFiles(): string[] {
+  if (!fs.existsSync(postsDirectory)) return [];
   return fs.readdirSync(postsDirectory).filter((f) => f.endsWith(".md"));
 }
 
