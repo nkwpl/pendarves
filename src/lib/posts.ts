@@ -8,6 +8,11 @@ const postsDirectory = path.join(process.cwd(), "content/posts");
 
 export type PostType = "essay" | "post";
 
+export interface Heading {
+  id: string;
+  text: string;
+}
+
 export interface Post {
   slug: string;
   title: string;
@@ -16,6 +21,7 @@ export interface Post {
   topic: string;
   excerpt: string;
   content: string;
+  headings: Heading[];
 }
 
 export interface PostMeta {
@@ -62,6 +68,21 @@ export async function getPostBySlug(slug: string): Promise<Post> {
   const { data, content } = matter(fileContents);
 
   const processedContent = await remark().use(html).process(content);
+  let htmlContent = processedContent.toString();
+
+  // Extract headings and add IDs
+  const headings: Heading[] = [];
+  htmlContent = htmlContent.replace(
+    /<h2>(.*?)<\/h2>/g,
+    (_match, text: string) => {
+      const id = text
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/(^-|-$)/g, "");
+      headings.push({ id, text });
+      return `<h2 id="${id}">${text}</h2>`;
+    }
+  );
 
   return {
     slug,
@@ -70,7 +91,8 @@ export async function getPostBySlug(slug: string): Promise<Post> {
     type: (data.type as PostType) || "post",
     topic: data.topic,
     excerpt: data.excerpt,
-    content: processedContent.toString(),
+    content: htmlContent,
+    headings,
   };
 }
 
